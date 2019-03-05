@@ -13,17 +13,16 @@ use Zet\FileUpload\Model\DefaultFile;
  * @author  Zechy <email@zechy.cz>
  * @package Zet\FileUpload
  */
-class FileUploadControl extends \Nette\Forms\Controls\UploadControl {
-	
+class FileUploadControl extends \Nette\Forms\Controls\UploadControl {	
 	# --------------------------------------------------------------------
 	# Registration
 	# --------------------------------------------------------------------
 	/**
 	 * @static
-	 * @param       $systemContainer
-	 * @param array $configuration
+	 * @param \Nette\DI\Container $systemContainer
+	 * @param array               $configuration
 	 */
-	public static function register(\Nette\DI\Container $systemContainer, $configuration = []) {
+	public static function register(\Nette\DI\Container $systemContainer, array $configuration = []) {
 		$class = __CLASS__;
 		\Nette\Forms\Container::extensionMethod("addFileUpload", function(
 			\Nette\Forms\Container $container, $name, $maxFiles = null, $maxFileSize = null
@@ -608,7 +607,7 @@ class FileUploadControl extends \Nette\Forms\Controls\UploadControl {
 		$units = ['k' => 1024, 'm' => 1048576, 'g' => 1073741824];
 		$unit = strtolower(substr($value, -1));
 		if(is_numeric($unit) || !isset($units[ $unit ])) {
-			return $value;
+			return (int)$value;
 		}
 		
 		return ((int)$value) * $units[ $unit ];
