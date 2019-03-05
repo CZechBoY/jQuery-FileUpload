@@ -11,7 +11,8 @@ matrix:
 
 script:
     - if [[ $PHPSTAN == "1" ]]; then
-        composer phpstan;
+        composer require --dev phpstan/phpstan-shim:^0.11 &&
+        vendor/bin/phpstan analyse src --configuration=.phpstan/phpstan.neon;
       fi
 
 before_script:
