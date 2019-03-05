@@ -39,7 +39,7 @@ abstract class BaseRenderer implements IUploadRenderer {
 	 * <li><b>errorMessage</b>: Element pro zobrazení chybové zprávy.</li>
 	 * </ul>
 	 *
-	 * @var Html[]
+	 * @var array<string, Html|null>
 	 */
 	protected $elements = [
 		"container" => null,
