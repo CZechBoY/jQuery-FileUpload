@@ -6,9 +6,12 @@ php:
   - 7.1
   - 7.2
   - 7.3
+    env: PHPSTAN=1
 
 script:
-    - composer phpstan
+    - if [[ $PHPSTAN == "1" ]]; then
+        composer phpstan;
+      fi
 
 before_script:
   - composer self-update
